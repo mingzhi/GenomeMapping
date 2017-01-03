@@ -17,7 +17,6 @@ def main(argv):
     """Dump SRA to fastq using sra-tools from NCBI"""
     sample_file = argv[0]
     workspace = argv[1]
-    workspace = "../workspace"
     samples = read_samples(sample_file)
     sra_files = [join(workspace, sample+".sra") for sample in samples]
     print("Dump SRA to fastq...")

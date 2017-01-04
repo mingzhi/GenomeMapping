@@ -34,11 +34,11 @@ echo "workspace: ${workspace}"
 
 module load numpy
 module load samtools
-
-python FetchSRA.py ${sample_file} ${workspace}
-python DumpSRA.py ${sample_file} ${workspace}
-python SmaltMap.py ${sample_file} ${reference} ${workspace}
-bash InvokeFreebayes.py ${sample_file} ${reference} ${workspace}
-bash ConcensusGenome.sh ${sample_file} ${reference} ${workspace}
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+python ${SCRIPT_DIR}/FetchSRA.py ${sample_file} ${workspace}
+python ${SCRIPT_DIR}/DumpSRA.py ${sample_file} ${workspace}
+python ${SCRIPT_DIR}/SmaltMap.py ${sample_file} ${reference} ${workspace}
+bash ${SCRIPT_DIR}/InvokeFreebayes.py ${sample_file} ${reference} ${workspace}
+bash ${SCRIPT_DIR}/ConcensusGenome.sh ${sample_file} ${reference} ${workspace}
 
 exit 0;
